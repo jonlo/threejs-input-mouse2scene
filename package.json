@@ -1,0 +1,28 @@
+{
+  "name": "threejs-input-mouse2scene",
+  "version": "1.0.1",
+  "description": "Input module to get the mouse position in a threejs 3d scene",
+  "main": "src/InputMouseToScene.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonlo/threejs-input-mouse2scene.git"
+  },
+  "keywords": [
+    "threejs",
+    "input",
+    "mouse",
+    "scene"
+  ],
+  "author": "Jon ldg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonlo/threejs-input-mouse2scene/issues"
+  },
+  "homepage": "https://github.com/jonlo/threejs-input-mouse2scene#readme",
+  "dependencies": {
+    "three": "^0.108.0"
+  }
+}
