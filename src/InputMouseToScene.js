@@ -7,7 +7,7 @@
  * @version 1
  **/
 import { Vector2, Vector3 } from 'three';
-
+import { EventManager } from 'smaw-event-manager';
 
 /**
  * Creates an instance of InputMouseToScene.
@@ -21,6 +21,7 @@ import { Vector2, Vector3 } from 'three';
 class InputMouseToScene {
 
 	constructor(container, camera, listeners) {
+		EventManager.call(this);
 		this.listeners = listeners ? listeners : [];
 		this.camera = camera;
 		container.addEventListener('mousedown', (e) => { this._mouseDown(e); });
@@ -29,38 +30,39 @@ class InputMouseToScene {
 	}
 
 	_mouseDown(e) {
-		let mouse = new Vector2((e.clientX / window.innerWidth) * 2 - 1, - (e.clientY / window.innerHeight) * 2 + 1);
-		let mousePos = this._getMousePositionInScene(mouse);
-		this.listeners.forEach((listener) => {
-			try {
-				listener.mouseDown(mousePos, mouse);
-			} catch (error) {
-				this._throwError('mouseDown');
-			}
+		let mouseNormalized = new Vector2((e.clientX / window.innerWidth) * 2 - 1, - (e.clientY / window.innerHeight) * 2 + 1);
+		let mousePosInScene = this._getMousePositionInScene(mouseNormalized);
+		this.trigger('m2sMouseDown', {
+			mousePosInScene: mousePosInScene,
+			mouseNormalized: mouseNormalized,
+			e: e
 		});
+		// this.listeners.forEach((listener) => {
+		// 	try {
+		// 		listener.mouseDown(mousePos, mouse);
+		// 	} catch (error) {
+		// 		this._throwError('mouseDown');
+		// 	}
+		// });
 	}
 
 	_mouseUp(e) {
-		let mouse = new Vector2((e.clientX / window.innerWidth) * 2 - 1, - (e.clientY / window.innerHeight) * 2 + 1);
-		let mousePos = this._getMousePositionInScene(mouse);
-		this.listeners.forEach((listener) => {
-			try {
-				listener.mouseUp(mousePos, mouse);
-			} catch (error) {
-				this._throwError('mouseUp');
-			}
+		let mouseNormalized = new Vector2((e.clientX / window.innerWidth) * 2 - 1, - (e.clientY / window.innerHeight) * 2 + 1);
+		let mousePosInScene = this._getMousePositionInScene(mouseNormalized);
+		this.trigger('m2sMouseUp', {
+			mousePosInScene: mousePosInScene,
+			mouseNormalized: mouseNormalized,
+			e: e
 		});
 	}
 
 	_mouseMove(e) {
-		let mouse = new Vector2((e.clientX / window.innerWidth) * 2 - 1, - (e.clientY / window.innerHeight) * 2 + 1);
-		let mousePos = this._getMousePositionInScene(mouse);
-		this.listeners.forEach((listener) => {
-			// try {
-			listener.mouseMove(mousePos, mouse);
-			// } catch (error) {
-			//     this._throwError('mouseMove');
-			// }
+		let mouseNormalized = new Vector2((e.clientX / window.innerWidth) * 2 - 1, - (e.clientY / window.innerHeight) * 2 + 1);
+		let mousePosInScene = this._getMousePositionInScene(mouseNormalized);
+		this.trigger('m2sMouseMove', {
+			mousePosInScene: mousePosInScene,
+			mouseNormalized: mouseNormalized,
+			e: e
 		});
 	}
 
