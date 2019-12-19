@@ -37,13 +37,6 @@ class InputMouseToScene {
 			mouseNormalized: mouseNormalized,
 			e: e
 		});
-		// this.listeners.forEach((listener) => {
-		// 	try {
-		// 		listener.mouseDown(mousePos, mouse);
-		// 	} catch (error) {
-		// 		this._throwError('mouseDown');
-		// 	}
-		// });
 	}
 
 	_mouseUp(e) {
