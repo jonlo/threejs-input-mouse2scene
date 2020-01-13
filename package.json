@@ -1,6 +1,6 @@
 {
   "name": "threejs-input-mouse2scene",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Input module to get the mouse position in a threejs 3d scene",
   "main": "src/InputMouseToScene.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/jonlo/threejs-input-mouse2scene#readme",
   "dependencies": {
-	"three": "^0.108.0",
+	"three": "^0.111.0",
 	"smaw-event-manager": "^1.0.1"
   }
 }
